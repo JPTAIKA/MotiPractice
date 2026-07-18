@@ -189,6 +189,32 @@ body {
     transform: translateY(1px);
 }
 
+
+.btn-discord-nav {
+    background: #5865F2; /* Discord Blurple */
+    color: white;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 1.4rem;
+    border-radius: 8px; /* Slightly rounded rectangle like in the user's upload */
+    font-weight: 700;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 12px rgba(88, 101, 242, 0.25);
+    transition: all var(--transition-speed);
+}
+
+.btn-discord-nav:hover {
+    background: #4752c4;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(88, 101, 242, 0.4);
+}
+
+.btn-discord-nav:active {
+    transform: translateY(1px);
+}
+
 /* Mobile Toggle */
 .mobile-menu-toggle {
     display: none;

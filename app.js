@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     statusTextLarge.textContent = 'ONLINE';
                     statusTextLarge.style.color = 'var(--success-color)';
                     
-                    statusVersion.textContent = data.version || '1.8.9 - 1.20+';
+                    statusVersion.textContent = data.version || '1.21.11';
                     statusPlayers.textContent = `${data.players.online} / ${data.players.max}`;
                     
                     let motdText = 'Moti.jpn.gg | PvP Practice';
