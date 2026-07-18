@@ -405,10 +405,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td>
                     <div class="player-info-cell">
                         <img class="player-avatar-3d" src="${craftyUrl}" alt="${p.username}" onerror="this.onerror=null; this.src='${fallbackUrl}'; this.className='player-avatar';">
-                        <div class="player-name-wrapper">
-                            <span class="player-name">${p.username}</span>
-                            <span class="player-id">#${p.shortId}</span>
-                        </div>
+                        <span class="player-name" style="font-weight: 700; font-size: 1rem; color: var(--text-primary); margin-left: 0.5rem;">${p.username}</span>
                     </div>
                 </td>
                 <td><span class="player-elo-val">${p.elo}</span></td>
