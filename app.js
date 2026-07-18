@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const statusTextLarge = document.getElementById('status-text-large');
     const statusVersion = document.getElementById('status-version');
     const statusPlayers = document.getElementById('status-players');
-    const statusMotd = document.getElementById('status-motd');
     const statusPing = document.getElementById('status-ping');
 
     const SERVER_IP = 'moti.jpn.gg';
@@ -124,11 +123,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     statusVersion.textContent = verName;
                     statusPlayers.textContent = `${data.players.online} / ${data.players.max}`;
                     
-                    let motdText = 'Moti.jpn.gg | PvP Practice';
-                    if (data.motd && data.motd.clean) {
-                        motdText = data.motd.clean;
-                    }
-                    statusMotd.textContent = motdText;
                     statusPing.textContent = `${pingTime} ms`;
                 } else {
                     handleOffline();
@@ -149,7 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
         statusTextLarge.style.color = '#ff4b4b';
         
         statusPlayers.textContent = '0 / 0';
-        statusMotd.textContent = 'サーバーへの接続がタイムアウトしました。';
         statusPing.textContent = '-- ms';
     };
 

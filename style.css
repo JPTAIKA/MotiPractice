@@ -954,6 +954,90 @@ body {
     opacity: 1;
 }
 
+/* Join Steps Section */
+.join-steps-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 3rem auto 0;
+    padding: 0 1.5rem;
+}
+
+.join-step-card {
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(255, 96, 127, 0.12);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-speed) ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.join-step-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(255, 96, 127, 0.08);
+    border-color: rgba(255, 96, 127, 0.25);
+}
+
+.step-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1.2rem;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 900;
+    color: var(--accent-color);
+    background: rgba(255, 96, 127, 0.08);
+    padding: 0.25rem 0.6rem;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+}
+
+.step-icon {
+    font-size: 2.2rem;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, rgba(0, 180, 204, 0.08) 0%, rgba(255, 96, 127, 0.05) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 180, 204, 0.1);
+}
+
+.join-step-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.join-step-card p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.join-ip-box {
+    margin-top: 1.2rem;
+    background: var(--bg-primary);
+    border: 1px dashed var(--accent-color);
+    color: var(--accent-color);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.05rem;
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    letter-spacing: 0.5px;
+}
+
 /* Responsive adjustments */
 @media (max-width: 900px) {
     .hero-title {
