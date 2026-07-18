@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 5. Fetch Minecraft Server Status
     const updateServerStatus = () => {
         const startTime = Date.now();
-        fetch(`https://api.mcsrvstat.us/2/${SERVER_IP}`)
+        fetch(`https://api.mcstatus.io/v2/status/java/${SERVER_IP}`)
             .then(res => res.json())
             .then(data => {
                 const pingTime = Date.now() - startTime;
@@ -116,12 +116,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     statusTextLarge.textContent = 'ONLINE';
                     statusTextLarge.style.color = 'var(--success-color)';
                     
-                    statusVersion.textContent = data.version || '1.21.11';
+                    // Use cleaner version name if available
+                    let verName = '1.21.11';
+                    if (data.version && data.version.name_clean) {
+                        verName = data.version.name_clean;
+                    }
+                    statusVersion.textContent = verName;
                     statusPlayers.textContent = `${data.players.online} / ${data.players.max}`;
                     
                     let motdText = 'Moti.jpn.gg | PvP Practice';
-                    if (data.motd && data.motd.clean && data.motd.clean.length > 0) {
-                        motdText = data.motd.clean.join('\n');
+                    if (data.motd && data.motd.clean) {
+                        motdText = data.motd.clean;
                     }
                     statusMotd.textContent = motdText;
                     statusPing.textContent = `${pingTime} ms`;
