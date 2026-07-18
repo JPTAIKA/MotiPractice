@@ -1178,14 +1178,14 @@ body {
     height: 100%;
     background-size: cover;
     background-position: center;
-    filter: saturate(1.05); /* Sharp and vivid! No blur so the beautiful build is fully visible */
-    transform: scale(1.0);
+    filter: blur(4px) saturate(1.1);
+    transform: scale(1.05);
     transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .mid-banner-section:hover .banner-image,
 .bottom-banner-section:hover .banner-image {
-    transform: scale(1.05); /* Gentle zoom on hover */
+    transform: scale(1.10) rotate(0.5deg); /* Subtle responsive reaction */
 }
 
 .banner-overlay {
@@ -1194,13 +1194,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    /* Softly fade only the top and bottom edges into the page background, leaving the middle crisp and clear */
-    background: linear-gradient(to bottom, 
-        #fafbfc 0%, 
-        rgba(250, 251, 252, 0) 15%, 
-        rgba(250, 251, 252, 0) 85%, 
-        #fafbfc 100%
-    );
+    /* Replicate the white/light theme fading overlay from the hero banner exactly */
+    background: linear-gradient(to bottom, rgba(250, 251, 252, 0.2) 0%, rgba(250, 251, 252, 0.75) 60%, rgba(250, 251, 252, 1) 100%);
     z-index: 2;
 }
 

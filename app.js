@@ -209,6 +209,152 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Fetch on page load
     updateServerStatus();
+
+    // 6. Real-time Firebase Leaderboard
+    const leaderboardBody = document.getElementById('leaderboard-body');
+    const leaderboardSearchInput = document.getElementById('leaderboard-search-input');
+    let allPlayers = [];
+
+    async function initLeaderboard() {
+        if (!leaderboardBody) return;
+
+        try {
+            // Step 1: Read the dynamically generated web_config.json
+            const configRes = await fetch('assets/web_config.json');
+            if (!configRes.ok) {
+                showLeaderboardError('設定ファイル (web_config.json) が見つかりません。');
+                return;
+            }
+            const configData = await configRes.json();
+            let firebaseDbUrl = configData.firebase_url;
+
+            if (!firebaseDbUrl || firebaseDbUrl.trim() === '' || firebaseDbUrl.includes('YOUR-PROJECT-ID')) {
+                showLeaderboardError('Firebaseが有効になっていないか、設定されていません。<br><span style="font-size:0.85rem;color:var(--text-muted);">Spigotプラグインの config.yml を設定してサーバーを起動してください。</span>');
+                return;
+            }
+
+            // Ensure URL ends with a slash and points to players.json
+            if (!firebaseDbUrl.endsWith('/')) {
+                firebaseDbUrl += '/';
+            }
+            const playersUrl = `${firebaseDbUrl}players.json`;
+
+            // Step 2: Fetch the players list from Firebase
+            const playersRes = await fetch(playersUrl);
+            if (!playersRes.ok) {
+                showLeaderboardError('Firebaseからのデータ取得に失敗しました。');
+                return;
+            }
+            const playersData = await playersRes.json();
+
+            if (!playersData) {
+                showLeaderboardError('ランキングデータがありません。サーバーでプレイヤーがプレイすると自動更新されます。');
+                return;
+            }
+
+            // Convert map to array and filter out empty entries
+            allPlayers = Object.keys(playersData).map(key => {
+                const p = playersData[key];
+                return {
+                    uuid: key,
+                    username: p.username || 'Unknown',
+                    elo: p.elo || 1000,
+                    wins: p.wins || 0,
+                    losses: p.losses || 0,
+                    kills: p.kills || 0,
+                    shortId: p.shortId || ''
+                };
+            });
+
+            // Sort by ELO rating descending
+            allPlayers.sort((a, b) => b.elo - a.elo);
+
+            // Render initial table
+            renderLeaderboard(allPlayers);
+
+            // Setup search listener
+            if (leaderboardSearchInput) {
+                leaderboardSearchInput.addEventListener('input', (e) => {
+                    const query = e.target.value.trim().toLowerCase();
+                    const filtered = allPlayers.filter(p => 
+                        p.username.toLowerCase().includes(query) || 
+                        p.shortId.toLowerCase().includes(query)
+                    );
+                    renderLeaderboard(filtered);
+                });
+            }
+
+        } catch (error) {
+            console.error('Leaderboard error:', error);
+            showLeaderboardError('データの接続エラーが発生しました。');
+        }
+    }
+
+    function renderLeaderboard(players) {
+        if (!leaderboardBody) return;
+        leaderboardBody.innerHTML = '';
+
+        if (players.length === 0) {
+            leaderboardBody.innerHTML = `
+                <tr>
+                    <td colspan="5" class="leaderboard-empty">プレイヤーが見つかりませんでした。</td>
+                </tr>
+            `;
+            return;
+        }
+
+        players.forEach((p, index) => {
+            const rank = index + 1;
+            let rankClass = 'rank-normal';
+            let rankDisplay = `<span class="rank-badge">${rank}</span>`;
+
+            if (rank === 1) {
+                rankClass = 'rank-1';
+                rankDisplay = `<span class="rank-badge">🥇</span>`;
+            } else if (rank === 2) {
+                rankClass = 'rank-2';
+                rankDisplay = `<span class="rank-badge">🥈</span>`;
+            } else if (rank === 3) {
+                rankClass = 'rank-3';
+                rankDisplay = `<span class="rank-badge">🥉</span>`;
+            }
+
+            const tr = document.createElement('tr');
+            tr.className = rankClass;
+
+            // Generate avatar URL from Cravatar (Helm avatar)
+            const avatarUrl = `https://cravatar.eu/helmavatar/${p.username}/32.png`;
+
+            tr.innerHTML = `
+                <td>${rankDisplay}</td>
+                <td>
+                    <div class="player-info-cell">
+                        <img class="player-avatar" src="${avatarUrl}" alt="${p.username}" onerror="this.src='https://cravatar.eu/helmavatar/Steve/32.png'">
+                        <div class="player-name-wrapper">
+                            <span class="player-name">${p.username}</span>
+                            <span class="player-id">#${p.shortId}</span>
+                        </div>
+                    </div>
+                </td>
+                <td><span class="player-elo-val">${p.elo}</span></td>
+                <td>${p.kills}</td>
+                <td>${p.wins}</td>
+            `;
+            leaderboardBody.appendChild(tr);
+        });
+    }
+
+    function showLeaderboardError(message) {
+        if (!leaderboardBody) return;
+        leaderboardBody.innerHTML = `
+            <tr>
+                <td colspan="5" class="leaderboard-empty">${message}</td>
+            </tr>
+        `;
+    }
+
+    // Initialize leaderboard
+    initLeaderboard();
     
     // Auto refresh status every 60 seconds
     setInterval(updateServerStatus, 60000);
