@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOTI JPN GG | マインクラフト PvP プラクティスサーバー</title>
+    <meta name="description" content="MOTI JPN GGは、Sumo, Boxing, Vanilla, UHCなどの充実したキット対戦、カスタムアンチチート(MotiAC)、リプレイ機能を備えた国内最高峰のMinecraft PvPプラクティスサーバーです。IP: moti.jpn.gg">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Glows -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <!-- Navigation Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="#" class="logo" id="nav-logo">
+                <span class="logo-moti">MOTI</span><span class="logo-gg">.JPN.GG</span>
+            </a>
+            
+            <nav class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link active" id="link-home"><i class="fa-solid fa-house"></i> ホーム</a>
+                <a href="#features" class="nav-link" id="link-features"><i class="fa-solid fa-gamepad"></i> 特徴</a>
+                <a href="#rules" class="nav-link" id="link-rules"><i class="fa-solid fa-gavel"></i> ルール</a>
+                <a href="#status" class="nav-link" id="link-status"><i class="fa-solid fa-signal"></i> サーバー状況</a>
+            </nav>
+            
+            <div class="nav-cta">
+                <button class="btn btn-copy-ip" id="btn-copy-ip-nav">
+                    <i class="fa-solid fa-copy"></i> IPをコピー
+                </button>
+            </div>
+            
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-drawer" id="mobile-drawer">
+        <button class="mobile-drawer-close" id="mobile-drawer-close"><i class="fa-solid fa-xmark"></i></button>
+        <div class="drawer-links">
+            <a href="#home" class="drawer-link" id="drawer-link-home"><i class="fa-solid fa-house"></i> ホーム</a>
+            <a href="#features" class="drawer-link" id="drawer-link-features"><i class="fa-solid fa-gamepad"></i> 特徴</a>
+            <a href="#rules" class="drawer-link" id="drawer-link-rules"><i class="fa-solid fa-gavel"></i> ルール</a>
+            <a href="#status" class="drawer-link" id="drawer-link-status"><i class="fa-solid fa-signal"></i> サーバー状況</a>
+            <button class="btn btn-copy-ip" id="btn-copy-ip-drawer" style="margin-top: 2rem; width: 100%;">
+                <i class="fa-solid fa-copy"></i> IPをコピー
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <div class="status-badge" id="hero-status-badge">
+                    <span class="pulse-indicator"></span>
+                    <span class="status-badge-text" id="status-badge-text">読み込み中...</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    国内最強の<br>
+                    <span class="text-glow">PVP PRACTICE</span> サーバー
+                </h1>
+                
+                <p class="hero-description">
+                    Boxing、Sumo、Vanilla対戦などの豊富なキットから、最強のアンチチート(MotiAC)、リプレイシステム、1v1やトーナメントなど、PvPに熱中できる最高の環境がここにあります。
+                </p>
+
+                <!-- Copy IP Card -->
+                <div class="copy-ip-container">
+                    <div class="ip-display" id="ip-address">moti.jpn.gg</div>
+                    <button class="btn-copy-hero" id="btn-copy-ip-hero" aria-label="Copy server IP address">
+                        <span class="copy-icon"><i class="fa-solid fa-copy"></i></span>
+                        <span class="copy-text">IPをコピー</span>
+                    </button>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <span class="stat-number" id="hero-online-count">0</span>
+                        <span class="stat-label">現在オンライン</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">公平なプレイ環境</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="scroll-indicator">
+                <span>SCROLL DOWN</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="section">
+            <h2 class="section-title">SERVER FEATURES <span class="accent-line"></span></h2>
+            <p class="section-subtitle">MOTI JPN GG だけで体験できるプレミアムな要素</p>
+            
+            <div class="grid-container">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>自社開発のMotiACアンチチート</h3>
+                    <p>誤検出しにくく、高精度なチート検知能力。高Pingプレイヤーへの最適化や、不正ツール・改造クライアントを的確にブロックする最高のセキュリティ環境。</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-box"></i></div>
+                    <h3>多彩なPvPキット設定</h3>
+                    <p>Boxing（チャット通知あり・コンボベース）、Sumo、UHC、Vanilla、NoDebuffなど、1.8のクラシック仕様から最新の最適化ルールまで幅広く対応しています。</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-video"></i></div>
+                    <h3>高機能リプレイシステム</h3>
+                    <p>試合終了後に、対戦時のあらゆる動きやスキル、ポジショニングをもう一度ゲーム内で再生して分析可能。自分のPvP技術を磨くのに最適なツールです。</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-trophy"></i></div>
+                    <h3>Ranked & Unranked & 大会</h3>
+                    <p>実力を競い合うELOレーティングシステムを搭載。いつでも白熱したマッチングができるほか、Sumo専用アリーナなど特徴的なイベントも常時開催。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rules Section -->
+        <section id="rules" class="section">
+            <h2 class="section-title">SERVER RULES <span class="accent-line"></span></h2>
+            <p class="section-subtitle">プレイヤー全員が楽しく、公平に遊ぶための基本ルール</p>
+            
+            <div class="rules-container">
+                <div class="rule-item">
+                    <div class="rule-number">01</div>
+                    <div class="rule-content">
+                        <h3>チート行為および不正クライアントの禁止</h3>
+                        <p>ハッククライアント、マクロ、ダブルクリックによる異常クリック、自動化ツールなどの使用は固く禁じられています。検知された場合は永久追放（BAN）となります。</p>
+                    </div>
+                </div>
+                
+                <div class="rule-item">
+                    <div class="rule-number">02</div>
+                    <div class="rule-content">
+                        <h3>バグ・脆弱性の悪用禁止</h3>
+                        <p>ゲームのバグやマップの隙間、システムの欠陥を故意に利用した不当な有利獲得行為は禁止されています。発見した場合は速やかに管理チームにご報告ください。</p>
+                    </div>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-number">03</div>
+                    <div class="rule-content">
+                        <h3>迷惑行為・ハラスメントの禁止</h3>
+                        <p>チャットでの誹謗中傷、暴言、過度なスパム、ニックネーム機能の悪用によるなりすまし行為は禁止です。他のプレイヤーに敬意を持って接してください。</p>
+                    </div>
+                </div>
+                
+                <div class="rule-item">
+                    <div class="rule-number">04</div>
+                    <div class="rule-content">
+                        <h3>対戦の意図的な放棄・チーミングの禁止</h3>
+                        <p>Ranked戦での故意の敗北行為（トロール）や、対戦相手との不当な協力関係（チーミング）は処罰の対象となります。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Server Status Section -->
+        <section id="status" class="section">
+            <div class="status-card-premium">
+                <div class="status-header">
+                    <h2>LIVE SERVER STATUS</h2>
+                    <span class="server-ip-badge">moti.jpn.gg</span>
+                </div>
+                
+                <div class="status-body">
+                    <div class="status-indicator-large">
+                        <div class="indicator-ring" id="status-ring"></div>
+                        <div class="indicator-text" id="status-text-large">接続中...</div>
+                    </div>
+                    
+                    <div class="status-details">
+                        <div class="detail-row">
+                            <span class="detail-label">バージョン</span>
+                            <span class="detail-value" id="status-version">1.8 - 1.20+</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">オンライン人数</span>
+                            <span class="detail-value" id="status-players">0 / 0</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">現在のMOTD</span>
+                            <span class="detail-value" id="status-motd">Moti.jpn.gg | Loading...</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">応答速度 (Ping)</span>
+                            <span class="detail-value" id="status-ping">-- ms</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>MOTI JPN GG</h3>
+                <p>マインクラフト最高のPvP練習体験をあなたに。</p>
+            </div>
+            <div class="footer-links">
+                <h4>リンク</h4>
+                <a href="#home">ホーム</a>
+                <a href="#features">特徴</a>
+                <a href="#rules">ルール</a>
+                <a href="#status">ステータス</a>
+            </div>
+            <div class="footer-social">
+                <h4>コミュニティ</h4>
+                <a href="https://discord.gg/your-invite" target="_blank" aria-label="Join Discord"><i class="fa-brands fa-discord"></i> Discord</a>
+                <a href="https://github.com/your-repo" target="_blank" aria-label="Github Repository"><i class="fa-brands fa-github"></i> GitHub</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 MOTI JPN GG. All Rights Reserved. This site is not affiliated with Mojang Studios.</p>
+        </div>
+    </footer>
+
+    <!-- Copy Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fa-solid fa-circle-check"></i> IPアドレスをクリップボードにコピーしました！
+    </div>
+
+    <!-- JavaScript logic -->
+    <script src="app.js"></script>
+</body>
+</html>
