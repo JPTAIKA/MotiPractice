@@ -37,12 +37,12 @@
             </a>
             
             <nav class="nav-menu" id="nav-menu">
-                <a href="#features" class="nav-link" id="link-features"><i class="fa-solid fa-gamepad"></i> 特徴</a>
-                <a href="#leaderboard" class="nav-link" id="link-leaderboard"><i class="fa-solid fa-ranking-star"></i> ランキング</a>
-                <a href="#cosmetics" class="nav-link" id="link-cosmetics"><i class="fa-solid fa-wand-magic-sparkles"></i> 演出効果</a>
-                <a href="#rules" class="nav-link" id="link-rules"><i class="fa-solid fa-gavel"></i> ルール</a>
-                <a href="#join" class="nav-link" id="link-join"><i class="fa-solid fa-right-to-bracket"></i> 参加方法</a>
-                <a href="#status" class="nav-link" id="link-status"><i class="fa-solid fa-signal"></i> サーバー状況</a>
+                <a href="index.html#features" class="nav-link" id="link-features"><i class="fa-solid fa-gamepad"></i> 特徴</a>
+                <a href="leaderboard.html" class="nav-link" id="link-leaderboard"><i class="fa-solid fa-ranking-star"></i> ランキング</a>
+                <a href="index.html#cosmetics" class="nav-link" id="link-cosmetics"><i class="fa-solid fa-wand-magic-sparkles"></i> 演出効果</a>
+                <a href="index.html#rules" class="nav-link" id="link-rules"><i class="fa-solid fa-gavel"></i> ルール</a>
+                <a href="index.html#join" class="nav-link" id="link-join"><i class="fa-solid fa-right-to-bracket"></i> 参加方法</a>
+                <a href="index.html#status" class="nav-link" id="link-status"><i class="fa-solid fa-signal"></i> サーバー状況</a>
             </nav>
             
             <div class="nav-cta">
@@ -61,14 +61,14 @@
     <div class="mobile-drawer" id="mobile-drawer">
         <button class="mobile-drawer-close" id="mobile-drawer-close"><i class="fa-solid fa-xmark"></i></button>
         <div class="drawer-links">
-            <a href="#home" class="drawer-link" id="drawer-link-home"><i class="fa-solid fa-house"></i> ホーム</a>
-            <a href="#features" class="drawer-link" id="drawer-link-features"><i class="fa-solid fa-gamepad"></i> 特徴</a>
-            <a href="#leaderboard" class="drawer-link" id="drawer-link-leaderboard"><i class="fa-solid fa-ranking-star"></i> ランキング</a>
-            <a href="#cosmetics" class="drawer-link" id="drawer-link-cosmetics"><i class="fa-solid fa-skull"></i> キル効果</a>
-            <a href="#victorydances" class="drawer-link" id="drawer-link-victorydances"><i class="fa-solid fa-trophy"></i> ビクトリーダンス</a>
-            <a href="#rules" class="drawer-link" id="drawer-link-rules"><i class="fa-solid fa-gavel"></i> ルール</a>
-            <a href="#join" class="drawer-link" id="drawer-link-join"><i class="fa-solid fa-right-to-bracket"></i> 参加方法</a>
-            <a href="#status" class="drawer-link" id="drawer-link-status"><i class="fa-solid fa-signal"></i> サーバー状況</a>
+            <a href="index.html#home" class="drawer-link" id="drawer-link-home"><i class="fa-solid fa-house"></i> ホーム</a>
+            <a href="index.html#features" class="drawer-link" id="drawer-link-features"><i class="fa-solid fa-gamepad"></i> 特徴</a>
+            <a href="leaderboard.html" class="drawer-link" id="drawer-link-leaderboard"><i class="fa-solid fa-ranking-star"></i> ランキング</a>
+            <a href="index.html#cosmetics" class="drawer-link" id="drawer-link-cosmetics"><i class="fa-solid fa-skull"></i> キル効果</a>
+            <a href="index.html#victorydances" class="drawer-link" id="drawer-link-victorydances"><i class="fa-solid fa-trophy"></i> ビクトリーダンス</a>
+            <a href="index.html#rules" class="drawer-link" id="drawer-link-rules"><i class="fa-solid fa-gavel"></i> ルール</a>
+            <a href="index.html#join" class="drawer-link" id="drawer-link-join"><i class="fa-solid fa-right-to-bracket"></i> 参加方法</a>
+            <a href="index.html#status" class="drawer-link" id="drawer-link-status"><i class="fa-solid fa-signal"></i> サーバー状況</a>
             <button class="btn btn-copy-ip" id="btn-copy-ip-drawer" style="margin-top: 2rem; width: 100%;">
                 <i class="fa-solid fa-copy"></i> IPをコピー
             </button>
@@ -173,42 +173,6 @@
             </div>
         </section>
 
-        <!-- Leaderboard Section -->
-        <section id="leaderboard" class="section">
-            <h2 class="section-title">LEADERBOARD <span class="accent-line"></span></h2>
-            <p class="section-subtitle">リアルタイムで集計される最強プレイヤーのランキング</p>
-            
-            <div class="leaderboard-container">
-                <div class="leaderboard-card">
-                    <div class="leaderboard-header">
-                        <div class="leaderboard-search">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                            <input type="text" id="leaderboard-search-input" placeholder="プレイヤー名または#IDで検索...">
-                        </div>
-                    </div>
-                    <div class="leaderboard-table-wrapper">
-                        <table class="leaderboard-table">
-                            <thead>
-                                <tr>
-                                    <th style="width: 10%;">順位</th>
-                                    <th style="width: 45%; text-align: left;">プレイヤー</th>
-                                    <th style="width: 15%;">ELO (レート)</th>
-                                    <th style="width: 15%;">キル数</th>
-                                    <th style="width: 15%;">勝利数</th>
-                                </tr>
-                            </thead>
-                            <tbody id="leaderboard-body">
-                                <tr>
-                                    <td colspan="5" class="leaderboard-empty" id="leaderboard-status-text">
-                                        <div class="spinner-inline"></div> ランキングデータを読み込み中...
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- Kill Effects Section -->
         <section id="cosmetics" class="section">

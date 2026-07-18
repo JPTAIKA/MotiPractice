@@ -1225,3 +1225,99 @@ body {
     color: var(--text-primary);
     text-shadow: 0 2px 10px rgba(250, 251, 252, 0.5);
 }
+
+/* Leaderboard Page Specific Styles */
+.kit-selector-section {
+    padding: 2rem 0 1rem;
+}
+
+.kit-selector-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.kit-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1.5rem;
+}
+
+.kit-tab {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 0.8rem 1.2rem;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: var(--shadow-small);
+}
+
+.kit-tab i {
+    font-size: 1rem;
+    color: var(--text-muted);
+    transition: color 0.3s ease;
+}
+
+.kit-tab:hover {
+    border-color: rgba(255, 96, 127, 0.3);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+}
+
+.kit-tab.active {
+    background: linear-gradient(135deg, var(--accent-color) 0%, #ff4b72 100%);
+    border-color: var(--accent-color);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(255, 96, 127, 0.25);
+}
+
+.kit-tab.active i {
+    color: #fff;
+}
+
+.active-kit-label {
+    display: flex;
+    align-items: center;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    position: relative;
+    padding-left: 0.8rem;
+}
+
+.active-kit-label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 18px;
+    background: var(--accent-color);
+    border-radius: 2px;
+}
+
+/* 3D Skin Render Styling */
+.player-avatar-3d {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
+    transition: transform 0.3s ease;
+}
+
+.player-info-cell:hover .player-avatar-3d {
+    transform: scale(1.15) translateY(-2px);
+}

@@ -210,10 +210,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Fetch on page load
     updateServerStatus();
 
-    // 6. Real-time Firebase Leaderboard
+    // 6. Real-time Firebase Leaderboard (Dedicated Page Integration)
     const leaderboardBody = document.getElementById('leaderboard-body');
     const leaderboardSearchInput = document.getElementById('leaderboard-search-input');
+    const thRatingType = document.getElementById('th-rating-type');
+    const thExtraType = document.getElementById('th-extra-type');
+    const currentKitTitle = document.getElementById('current-kit-title');
+    const kitTabs = document.querySelectorAll('.kit-tab');
+
     let allPlayers = [];
+    let currentKit = 'global'; // 'global' or kit names like 'sumo', 'uhc', etc.
 
     async function initLeaderboard() {
         if (!leaderboardBody) return;
@@ -252,7 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Convert map to array and filter out empty entries
+            // Convert map to array with kit statistics parsed
             allPlayers = Object.keys(playersData).map(key => {
                 const p = playersData[key];
                 return {
@@ -262,32 +268,99 @@ document.addEventListener('DOMContentLoaded', () => {
                     wins: p.wins || 0,
                     losses: p.losses || 0,
                     kills: p.kills || 0,
-                    shortId: p.shortId || ''
+                    shortId: p.shortId || '',
+                    kits: p.kits || {} // Contains specific kit ratings
                 };
             });
 
-            // Sort by ELO rating descending
-            allPlayers.sort((a, b) => b.elo - a.elo);
-
-            // Render initial table
-            renderLeaderboard(allPlayers);
+            // Update leaderboard display
+            updateLeaderboardDisplay();
 
             // Setup search listener
             if (leaderboardSearchInput) {
-                leaderboardSearchInput.addEventListener('input', (e) => {
-                    const query = e.target.value.trim().toLowerCase();
-                    const filtered = allPlayers.filter(p => 
-                        p.username.toLowerCase().includes(query) || 
-                        p.shortId.toLowerCase().includes(query)
-                    );
-                    renderLeaderboard(filtered);
+                leaderboardSearchInput.addEventListener('input', () => {
+                    updateLeaderboardDisplay();
                 });
             }
+
+            // Setup kit selector tabs
+            kitTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    kitTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    currentKit = tab.dataset.kit;
+                    
+                    if (currentKitTitle) {
+                        currentKitTitle.innerText = tab.querySelector('span').innerText;
+                    }
+                    
+                    updateLeaderboardDisplay();
+                });
+            });
 
         } catch (error) {
             console.error('Leaderboard error:', error);
             showLeaderboardError('データの接続エラーが発生しました。');
         }
+    }
+
+    function updateLeaderboardDisplay() {
+        if (!leaderboardBody) return;
+
+        const searchQuery = leaderboardSearchInput ? leaderboardSearchInput.value.trim().toLowerCase() : '';
+        let filteredPlayers = [];
+
+        // Update headers based on selected kit
+        if (currentKit === 'global') {
+            if (thRatingType) thRatingType.innerText = 'ELO (総合レート)';
+            if (thExtraType) thExtraType.innerText = 'キル数';
+
+            filteredPlayers = allPlayers.map(p => ({
+                username: p.username,
+                shortId: p.shortId,
+                elo: p.elo,
+                wins: p.wins,
+                extraValue: p.kills // Display kills for global
+            }));
+        } else {
+            if (thRatingType) thRatingType.innerText = 'ELO (キットレート)';
+            if (thExtraType) thExtraType.innerText = '敗北数';
+
+            // Filter out players who haven't played this kit, or default them
+            allPlayers.forEach(p => {
+                // Find kit data (case-insensitive search)
+                let kitData = null;
+                const kitsKeys = Object.keys(p.kits);
+                const matchingKey = kitsKeys.find(k => k.toLowerCase() === currentKit.toLowerCase());
+                
+                if (matchingKey) {
+                    kitData = p.kits[matchingKey];
+                }
+
+                if (kitData) {
+                    filteredPlayers.push({
+                        username: p.username,
+                        shortId: p.shortId,
+                        elo: kitData.elo || 1000,
+                        wins: kitData.wins || 0,
+                        extraValue: kitData.losses || 0 // Display losses for specific kits
+                    });
+                }
+            });
+        }
+
+        // Apply search query filter
+        if (searchQuery !== '') {
+            filteredPlayers = filteredPlayers.filter(p => 
+                p.username.toLowerCase().includes(searchQuery) || 
+                p.shortId.toLowerCase().includes(searchQuery)
+            );
+        }
+
+        // Sort by ELO rating descending
+        filteredPlayers.sort((a, b) => b.elo - a.elo);
+
+        renderLeaderboard(filteredPlayers);
     }
 
     function renderLeaderboard(players) {
@@ -297,7 +370,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (players.length === 0) {
             leaderboardBody.innerHTML = `
                 <tr>
-                    <td colspan="5" class="leaderboard-empty">プレイヤーが見つかりませんでした。</td>
+                    <td colspan="5" class="leaderboard-empty">プレイヤーデータが見つかりませんでした。</td>
                 </tr>
             `;
             return;
@@ -322,14 +395,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const tr = document.createElement('tr');
             tr.className = rankClass;
 
-            // Generate avatar URL from Cravatar (Helm avatar)
-            const avatarUrl = `https://cravatar.eu/helmavatar/${p.username}/32.png`;
+            // 3D Player skin render powered by crafty.gg skin-service
+            // Fallback to standard cravatar if crafty.gg fails to load
+            const craftyUrl = `https://render.crafty.gg/3d/bust/${p.username}?width=100&height=100&shadow=true`;
+            const fallbackUrl = `https://cravatar.eu/helmavatar/${p.username}/32.png`;
 
             tr.innerHTML = `
                 <td>${rankDisplay}</td>
                 <td>
                     <div class="player-info-cell">
-                        <img class="player-avatar" src="${avatarUrl}" alt="${p.username}" onerror="this.src='https://cravatar.eu/helmavatar/Steve/32.png'">
+                        <img class="player-avatar-3d" src="${craftyUrl}" alt="${p.username}" onerror="this.onerror=null; this.src='${fallbackUrl}'; this.className='player-avatar';">
                         <div class="player-name-wrapper">
                             <span class="player-name">${p.username}</span>
                             <span class="player-id">#${p.shortId}</span>
@@ -337,8 +412,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </td>
                 <td><span class="player-elo-val">${p.elo}</span></td>
-                <td>${p.kills}</td>
                 <td>${p.wins}</td>
+                <td>${p.extraValue}</td>
             `;
             leaderboardBody.appendChild(tr);
         });

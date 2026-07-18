@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOTI JPN GG | ランキングリーダーボード</title>
+    <meta name="description" content="MOTI JPN GGのマインクラフト PvP プラクティスサーバー公式リアルタイムランキング。各キット対戦のELOレートとトッププレイヤー情報を掲載。">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Favicon (Tab Icon) -->
+    <link rel="icon" href="assets/logo.png" type="image/png">
+    
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Sakura Falling Background effect container -->
+    <div class="sakura-container" id="sakura-container"></div>
+
+    <!-- Background Glows (Sakura Soft Pink & Cyan) -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <!-- Navigation Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="index.html" class="logo" id="nav-logo">
+                <img src="assets/logo.png" alt="Mochi Logo" class="logo-img">
+                <span class="logo-moti">MOTI</span><span class="logo-gg">.JPN.GG</span>
+            </a>
+            
+            <nav class="nav-menu" id="nav-menu">
+                <a href="index.html#features" class="nav-link" id="link-features"><i class="fa-solid fa-gamepad"></i> 特徴</a>
+                <a href="leaderboard.html" class="nav-link active" id="link-leaderboard"><i class="fa-solid fa-ranking-star"></i> ランキング</a>
+                <a href="index.html#cosmetics" class="nav-link" id="link-cosmetics"><i class="fa-solid fa-wand-magic-sparkles"></i> 演出効果</a>
+                <a href="index.html#rules" class="nav-link" id="link-rules"><i class="fa-solid fa-gavel"></i> ルール</a>
+                <a href="index.html#join" class="nav-link" id="link-join"><i class="fa-solid fa-right-to-bracket"></i> 参加方法</a>
+                <a href="index.html#status" class="nav-link" id="link-status"><i class="fa-solid fa-signal"></i> サーバー状況</a>
+            </nav>
+            
+            <div class="nav-cta">
+                <a href="https://discord.gg/aWamq5YGHT" target="_blank" class="btn btn-discord-nav" id="btn-discord-nav">
+                    <i class="fa-brands fa-discord"></i> Discordに参加 <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.75rem; margin-left: 0.2rem; opacity: 0.85;"></i>
+                </a>
+            </div>
+            
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-drawer" id="mobile-drawer">
+        <button class="mobile-drawer-close" id="mobile-drawer-close"><i class="fa-solid fa-xmark"></i></button>
+        <div class="drawer-links">
+            <a href="index.html#home" class="drawer-link" id="drawer-link-home"><i class="fa-solid fa-house"></i> ホーム</a>
+            <a href="index.html#features" class="drawer-link" id="drawer-link-features"><i class="fa-solid fa-gamepad"></i> 特徴</a>
+            <a href="leaderboard.html" class="drawer-link active" id="drawer-link-leaderboard"><i class="fa-solid fa-ranking-star"></i> ランキング</a>
+            <a href="index.html#cosmetics" class="drawer-link" id="drawer-link-cosmetics"><i class="fa-solid fa-skull"></i> キル効果</a>
+            <a href="index.html#victorydances" class="drawer-link" id="drawer-link-victorydances"><i class="fa-solid fa-trophy"></i> ビクトリーダンス</a>
+            <a href="index.html#rules" class="drawer-link" id="drawer-link-rules"><i class="fa-solid fa-gavel"></i> ルール</a>
+            <a href="index.html#join" class="drawer-link" id="drawer-link-join"><i class="fa-solid fa-right-to-bracket"></i> 参加方法</a>
+            <a href="index.html#status" class="drawer-link" id="drawer-link-status"><i class="fa-solid fa-signal"></i> サーバー状況</a>
+            <button class="btn btn-copy-ip" id="btn-copy-ip-drawer" style="margin-top: 2rem; width: 100%;">
+                <i class="fa-solid fa-copy"></i> IPをコピー
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main style="padding-top: 100px; min-height: calc(100vh - 300px);">
+        <!-- Leaderboard Hero Header -->
+        <section class="section" style="padding-bottom: 0;">
+            <h2 class="section-title">PLAYER LEADERBOARD <span class="accent-line"></span></h2>
+            <p class="section-subtitle">サーバー全体の統計およびキットごとのリアルタイムレーティング</p>
+        </section>
+
+        <!-- Kit Selector Section -->
+        <section class="kit-selector-section">
+            <div class="kit-selector-container">
+                <div class="kit-tabs">
+                    <button class="kit-tab active" data-kit="global">
+                        <i class="fa-solid fa-globe"></i>
+                        <span>総合 (Global)</span>
+                    </button>
+                    <button class="kit-tab" data-kit="sumo">
+                        <i class="fa-solid fa-circle-dot"></i>
+                        <span>Sumo</span>
+                    </button>
+                    <button class="kit-tab" data-kit="uhc">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <span>UHC</span>
+                    </button>
+                    <button class="kit-tab" data-kit="sword">
+                        <i class="fa-solid fa-shield-cat"></i>
+                        <span>Sword</span>
+                    </button>
+                    <button class="kit-tab" data-kit="vanilla">
+                        <i class="fa-solid fa-cube"></i>
+                        <span>Vanilla</span>
+                    </button>
+                    <button class="kit-tab" data-kit="boxing">
+                        <i class="fa-solid fa-hand-fist"></i>
+                        <span>Boxing</span>
+                    </button>
+                    <button class="kit-tab" data-kit="archer">
+                        <i class="fa-solid fa-crosshairs"></i>
+                        <span>Archer</span>
+                    </button>
+                    <button class="kit-tab" data-kit="crystal">
+                        <i class="fa-solid fa-gem"></i>
+                        <span>Crystal</span>
+                    </button>
+                    <button class="kit-tab" data-kit="axe">
+                        <i class="fa-solid fa-hammer"></i>
+                        <span>Axe</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leaderboard Table Section -->
+        <section class="section" style="padding-top: 1rem; padding-bottom: 6rem;">
+            <div class="leaderboard-container">
+                <div class="leaderboard-card">
+                    <div class="leaderboard-header">
+                        <div class="active-kit-label">
+                            <span id="current-kit-title">総合 (Global)</span>
+                        </div>
+                        <div class="leaderboard-search">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" id="leaderboard-search-input" placeholder="プレイヤー名または#IDで検索...">
+                        </div>
+                    </div>
+                    <div class="leaderboard-table-wrapper">
+                        <table class="leaderboard-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 10%;">順位</th>
+                                    <th style="width: 45%; text-align: left;">プレイヤー</th>
+                                    <th style="width: 15%;" id="th-rating-type">ELO (総合レート)</th>
+                                    <th style="width: 15%;">勝利数</th>
+                                    <th style="width: 15%;" id="th-extra-type">キル数</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leaderboard-body">
+                                <tr>
+                                    <td colspan="5" class="leaderboard-empty" id="leaderboard-status-text">
+                                        <div class="spinner-inline"></div> ランキングデータを読み込み中...
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="footer-logo-row">
+                    <img src="assets/logo.png" alt="Mochi Logo" class="footer-logo-img">
+                    <h3>MOTI JPN GG</h3>
+                </div>
+                <p>マインクラフト最高のPvP練習体験をあなたに。</p>
+            </div>
+            <div class="footer-links">
+                <h4>リンク</h4>
+                <a href="index.html#home">ホーム</a>
+                <a href="index.html#features">特徴</a>
+                <a href="leaderboard.html">ランキング</a>
+                <a href="index.html#cosmetics">キル効果</a>
+                <a href="index.html#victorydances">ビクトリーダンス</a>
+                <a href="index.html#rules">ルール</a>
+                <a href="index.html#join">参加方法</a>
+                <a href="index.html#status">ステータス</a>
+            </div>
+            <div class="footer-social">
+                <h4>コミュニティ</h4>
+                <div class="social-icons">
+                    <a href="https://discord.gg/aWamq5YGHT" target="_blank" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+                    <a href="https://twitter.com/motijpngg" target="_blank" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 MOTI JPN GG. All Rights Reserved. Not affiliated with Mojang Studios.</p>
+        </div>
+    </footer>
+
+    <!-- JS Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
