@@ -9,7 +9,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,7 +18,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Background Glows -->
+    <!-- Sakura Falling Background effect container -->
+    <div class="sakura-container" id="sakura-container"></div>
+
+    <!-- Background Glows (Sakura Soft Pink & Cyan) -->
     <div class="bg-glow bg-glow-1"></div>
     <div class="bg-glow bg-glow-2"></div>
 
@@ -26,6 +29,7 @@
     <header class="header">
         <div class="nav-container">
             <a href="#" class="logo" id="nav-logo">
+                <img src="assets/logo.png" alt="Mochi Logo" class="logo-img">
                 <span class="logo-moti">MOTI</span><span class="logo-gg">.JPN.GG</span>
             </a>
             
@@ -66,15 +70,24 @@
     <main>
         <!-- Hero Section -->
         <section id="home" class="hero-section">
+            <div class="hero-banner-container">
+                <div class="hero-banner-image" style="background-image: url('assets/lobby.jpg');"></div>
+                <div class="hero-banner-overlay"></div>
+            </div>
+            
             <div class="hero-content">
                 <div class="status-badge" id="hero-status-badge">
                     <span class="pulse-indicator"></span>
                     <span class="status-badge-text" id="status-badge-text">読み込み中...</span>
                 </div>
+
+                <div class="hero-icon-container">
+                    <img src="assets/logo.png" alt="Mochi Mascot" class="hero-mascot-img">
+                </div>
                 
                 <h1 class="hero-title">
-                    国内最強の<br>
-                    <span class="text-glow">PVP PRACTICE</span> サーバー
+                    和風情緒溢れる桜ロビーと<br>
+                    <span class="text-glow">国内最強のPvP練習環境</span>
                 </h1>
                 
                 <p class="hero-description">
@@ -132,7 +145,7 @@
                 <div class="feature-card">
                     <div class="feature-icon"><i class="fa-solid fa-video"></i></div>
                     <h3>高機能リプレイシステム</h3>
-                    <p>試合終了後に、対戦時のあらゆる動きやスキル、ポジショニングをもう一度ゲーム内で再生して分析可能。自分のPvP技術を磨くのに最適なツールです。</p>
+                    <p>試合終了後に、対戦時のあらゆる動きやスキル,ポジショニングをもう一度ゲーム内で再生して分析可能。自分のPvP技術を磨くのに最適なツールです。</p>
                 </div>
 
                 <!-- Feature 4 -->
@@ -225,7 +238,10 @@
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-brand">
-                <h3>MOTI JPN GG</h3>
+                <div class="footer-logo-row">
+                    <img src="assets/logo.png" alt="Mochi Logo" class="footer-logo-img">
+                    <h3>MOTI JPN GG</h3>
+                </div>
                 <p>マインクラフト最高のPvP練習体験をあなたに。</p>
             </div>
             <div class="footer-links">

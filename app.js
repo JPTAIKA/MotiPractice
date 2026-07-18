@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 3. Mobile Navigation Menu
+    // 3. Mobile Navigation Drawer
     mobileMenuToggle.addEventListener('click', () => {
         mobileDrawer.classList.add('open');
     });
@@ -97,7 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 5. Fetch Minecraft Server Status
     const updateServerStatus = () => {
-        // Fetch from api.mcsrvstat.us (Free, reliable Minecraft Status API)
         const startTime = Date.now();
         fetch(`https://api.mcsrvstat.us/2/${SERVER_IP}`)
             .then(res => res.json())
@@ -120,7 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     statusVersion.textContent = data.version || '1.8.9 - 1.20+';
                     statusPlayers.textContent = `${data.players.online} / ${data.players.max}`;
                     
-                    // Format MOTD nicely (stripping color codes if raw is selected, or use clean formatting)
                     let motdText = 'Moti.jpn.gg | PvP Practice';
                     if (data.motd && data.motd.clean && data.motd.clean.length > 0) {
                         motdText = data.motd.clean.join('\n');
@@ -143,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         statusRing.className = 'indicator-ring offline';
         statusTextLarge.textContent = 'OFFLINE';
-        statusTextLarge.style.color = '#ff3333';
+        statusTextLarge.style.color = '#ff4b4b';
         
         statusPlayers.textContent = '0 / 0';
         statusMotd.textContent = 'サーバーへの接続がタイムアウトしました。';
@@ -170,6 +168,42 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, stepTime);
     };
+
+    // 6. Sakura Falling Leaves Effect
+    const sakuraContainer = document.getElementById('sakura-container');
+    if (sakuraContainer) {
+        const createPetal = () => {
+            const petal = document.createElement('div');
+            petal.classList.add('sakura-petal');
+            
+            // Random properties
+            const size = Math.random() * 8 + 6; // 6px to 14px
+            const left = Math.random() * window.innerWidth;
+            const duration = Math.random() * 6 + 5; // 5s to 11s
+            const delay = Math.random() * 5; // up to 5s
+            
+            petal.style.width = `${size}px`;
+            petal.style.height = `${size}px`;
+            petal.style.left = `${left}px`;
+            petal.style.animationDuration = `${duration}s`;
+            petal.style.animationDelay = `${delay}s`;
+            
+            sakuraContainer.appendChild(petal);
+            
+            // Remove petal after animation ends
+            setTimeout(() => {
+                petal.remove();
+            }, (duration + delay) * 1000);
+        };
+        
+        // Spawn 25 initial petals
+        for (let i = 0; i < 25; i++) {
+            createPetal();
+        }
+        
+        // Spawn new petals periodically
+        setInterval(createPetal, 400);
+    }
 
     // Fetch on page load
     updateServerStatus();
