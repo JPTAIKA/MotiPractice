@@ -39,7 +39,8 @@
             <nav class="nav-menu" id="nav-menu">
                 <a href="#home" class="nav-link active" id="link-home"><i class="fa-solid fa-house"></i> ホーム</a>
                 <a href="#features" class="nav-link" id="link-features"><i class="fa-solid fa-gamepad"></i> 特徴</a>
-                <a href="#cosmetics" class="nav-link" id="link-cosmetics"><i class="fa-solid fa-wand-magic-sparkles"></i> 演出効果</a>
+                <a href="#cosmetics" class="nav-link" id="link-cosmetics"><i class="fa-solid fa-skull"></i> キル効果</a>
+                <a href="#victorydances" class="nav-link" id="link-victorydances"><i class="fa-solid fa-trophy"></i> ビクトリーダンス</a>
                 <a href="#rules" class="nav-link" id="link-rules"><i class="fa-solid fa-gavel"></i> ルール</a>
                 <a href="#join" class="nav-link" id="link-join"><i class="fa-solid fa-right-to-bracket"></i> 参加方法</a>
                 <a href="#status" class="nav-link" id="link-status"><i class="fa-solid fa-signal"></i> サーバー状況</a>
@@ -63,7 +64,8 @@
         <div class="drawer-links">
             <a href="#home" class="drawer-link" id="drawer-link-home"><i class="fa-solid fa-house"></i> ホーム</a>
             <a href="#features" class="drawer-link" id="drawer-link-features"><i class="fa-solid fa-gamepad"></i> 特徴</a>
-            <a href="#cosmetics" class="drawer-link" id="drawer-link-cosmetics"><i class="fa-solid fa-wand-magic-sparkles"></i> 演出効果</a>
+            <a href="#cosmetics" class="drawer-link" id="drawer-link-cosmetics"><i class="fa-solid fa-skull"></i> キル効果</a>
+            <a href="#victorydances" class="drawer-link" id="drawer-link-victorydances"><i class="fa-solid fa-trophy"></i> ビクトリーダンス</a>
             <a href="#rules" class="drawer-link" id="drawer-link-rules"><i class="fa-solid fa-gavel"></i> ルール</a>
             <a href="#join" class="drawer-link" id="drawer-link-join"><i class="fa-solid fa-right-to-bracket"></i> 参加方法</a>
             <a href="#status" class="drawer-link" id="drawer-link-status"><i class="fa-solid fa-signal"></i> サーバー状況</a>
@@ -163,16 +165,16 @@
             </div>
         </section>
 
-        <!-- Cosmetics Section -->
+        <!-- Kill Effects Section -->
         <section id="cosmetics" class="section">
-            <h2 class="section-title">SERVER COSMETICS <span class="accent-line"></span></h2>
-            <p class="section-subtitle">サーバー内で使用できる特別なエフェクトやビクトリーダンスをご紹介します</p>
+            <h2 class="section-title">KILL EFFECTS <span class="accent-line"></span></h2>
+            <p class="section-subtitle">対戦相手を倒した瞬間に発動する特別なエフェクトをご紹介します</p>
             
             <div class="grid-container">
                 <!-- Video 1 -->
                 <div class="feature-card cosmetic-card">
                     <div class="video-wrapper">
-                        <video class="cosmetic-video" autoplay loop muted playsinline controls>
+                        <video class="cosmetic-video" autoplay loop muted playsinline>
                             <source src="assets/blood_explosion.mp4" type="video/mp4">
                             お使いのブラウザは動画の再生に対応していません。
                         </video>
@@ -187,7 +189,7 @@
                 <!-- Video 2 -->
                 <div class="feature-card cosmetic-card">
                     <div class="video-wrapper">
-                        <video class="cosmetic-video" autoplay loop muted playsinline controls>
+                        <video class="cosmetic-video" autoplay loop muted playsinline>
                             <source src="assets/anvil_slam.mp4" type="video/mp4">
                             お使いのブラウザは動画の再生に対応していません。
                         </video>
@@ -202,7 +204,7 @@
                 <!-- Video 3 -->
                 <div class="feature-card cosmetic-card">
                     <div class="video-wrapper">
-                        <video class="cosmetic-video" autoplay loop muted playsinline controls>
+                        <video class="cosmetic-video" autoplay loop muted playsinline>
                             <source src="assets/cyber_glitch.mp4" type="video/mp4">
                             お使いのブラウザは動画の再生に対応していません。
                         </video>
@@ -211,6 +213,59 @@
                         <h3>サイバーグリッチ</h3>
                         <span class="cosmetic-badge killeffect-badge">キルエフェクト</span>
                         <p>相手をキルした瞬間に、周囲の空間がデジタルグリッチのエフェクトに包まれる演出です。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Victory Dances Section -->
+        <section id="victorydances" class="section">
+            <h2 class="section-title">VICTORY DANCES <span class="accent-line"></span></h2>
+            <p class="section-subtitle">試合に勝利した瞬間に周囲の空間を彩る特別な演出効果をご紹介します</p>
+            
+            <div class="grid-container">
+                <!-- Video 1 -->
+                <div class="feature-card cosmetic-card">
+                    <div class="video-wrapper">
+                        <video class="cosmetic-video" autoplay loop muted playsinline>
+                            <source src="assets/thunderstorm.mp4" type="video/mp4">
+                            お使いのブラウザは動画の再生に対応していません。
+                        </video>
+                    </div>
+                    <div class="cosmetic-info">
+                        <h3>サンダーストーム</h3>
+                        <span class="cosmetic-badge victorydance-badge">ビクトリーダンス</span>
+                        <p>試合に勝利した際、空が暗転し激しい雷雨と落雷が周囲に降り注ぐ演出です。</p>
+                    </div>
+                </div>
+                
+                <!-- Video 2 -->
+                <div class="feature-card cosmetic-card">
+                    <div class="video-wrapper">
+                        <video class="cosmetic-video" autoplay loop muted playsinline>
+                            <source src="assets/meteor_strike.mp4" type="video/mp4">
+                            お使いのブラウザは動画の再生に対応していません。
+                        </video>
+                    </div>
+                    <div class="cosmetic-info">
+                        <h3>メテオ・ストライク</h3>
+                        <span class="cosmetic-badge victorydance-badge">ビクトリーダンス</span>
+                        <p>試合に勝利した際、無数の巨大な隕石（メテオ）が空から次々と地面に衝突する演出です。</p>
+                    </div>
+                </div>
+                
+                <!-- Video 3 -->
+                <div class="feature-card cosmetic-card">
+                    <div class="video-wrapper">
+                        <video class="cosmetic-video" autoplay loop muted playsinline>
+                            <source src="assets/shadow_clone.mp4" type="video/mp4">
+                            お使いのブラウザは動画の再生に対応していません。
+                        </video>
+                    </div>
+                    <div class="cosmetic-info">
+                        <h3>影分身ペコペコダンス</h3>
+                        <span class="cosmetic-badge victorydance-badge">ビクトリーダンス</span>
+                        <p>試合に勝利した際、自分の影分身たちが整列して一斉に挨拶ダンスをするユニークな演出です。</p>
                     </div>
                 </div>
             </div>
@@ -337,7 +392,8 @@
                 <h4>リンク</h4>
                 <a href="#home">ホーム</a>
                 <a href="#features">特徴</a>
-                <a href="#cosmetics">演出効果</a>
+                <a href="#cosmetics">キル効果</a>
+                <a href="#victorydances">ビクトリーダンス</a>
                 <a href="#rules">ルール</a>
                 <a href="#join">参加方法</a>
                 <a href="#status">ステータス</a>
