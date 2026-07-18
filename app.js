@@ -52,7 +52,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         navLinks.forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
+            let targetHref = `#${current}`;
+            if (current === 'victorydances') {
+                targetHref = '#cosmetics';
+            }
+            if (link.getAttribute('href') === targetHref) {
                 link.classList.add('active');
             }
         });
